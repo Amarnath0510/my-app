@@ -1,6 +1,6 @@
-.App {
+/* .App {
   text-align: center;
-}
+} */
 
 .App-logo {
   height: 40vmin;
@@ -38,7 +38,25 @@
 }
 .user-pic{
   height:200px;
-  width: 200px;
+  width: 340px;
   border-radius: 50%;
   object-fit:cover; 
+}
+.details{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+}
+.movie-poster{
+  height:400px;
+  width:340px;
+  object-fit: cover;
+}
+.movie-container{
+  width:340px;
+}
+body{
+  margin: 20px;
+  font-family:cursive;
 }
