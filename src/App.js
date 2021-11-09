@@ -1,8 +1,11 @@
 import './App.css';
-import{useState} from 'react';
+import { MovieList } from './MovieList';
+import{useState} from "react";
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 export default function App() {
   console.log("Hi");
-  const movies=[
+  const INITIAL_MOVIES=[
     {
       name:"Godfather",
       poster:"https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
@@ -52,61 +55,85 @@ export default function App() {
       summary:"Kathiresan, who escapes from prison, accidentally meets his lookalike, Jeeva, who gets shot by criminals. Kathiresan masquerades as Jeeva in order to save himself, but it turns him into a crusader.",
     }
   ];
+  const [name,setName]=useState("");
+  const [poster,setPoster]=useState("");
+  const [ratings,setRatings]=useState("");
+  const [summary,setSummary]=useState("");
+const[movies,setMovies]=useState(INITIAL_MOVIES);
+const addMovie=()=>{
+ const newMovie={
+    name,
+    poster,
+    ratings,
+    summary,
+  };
+  console.log(newMovie);
+  setMovies([...movies,newMovie]);
 
+
+};
   return ( 
      <div className="App">
-    <MovieList movies={movies}/>
+     <div>
+
+     <input
+     value={name}
+  onChange={(event)=>setName(event.target.value)}
+      placeholder="Enter a movie name "/>
+     <input 
+     value={poster}
+  onChange={(event)=>setPoster(event.target.value)}
+     placeholder="Enter a movie poster "/>
+     <input
+     value={ratings}
+  onChange={(event)=>setRatings(event.target.value)}
+      placeholder="Enter a movie ratings "/>
+     <input 
+     value={summary}
+  onChange={(event)=>setSummary(event.target.value)}
+      placeholder="Enter a movie summary "/>
+     < button onClick={addMovie}>Add movie</button>
+     </div>
+     <MovieList movies={movies}/>
+      <AddColor/>
+     <ColorBox />
+   </div> 
+  );
+}
+
+function AddColor(){
+  const [color,setColor]=useState("orange");
+  const styles={backgroundColor:color};
+  // const colors=["teal","orange","blue"];
+  const[colors,setColors]=useState(["teal","orange","blue"]);
+  return (
+    <div>
+    <div className="add-color-form">
+  <TextField
+  value={color}
+  onChange={(event)=>setColor(event.target.value)}
+  style={styles}
+  label="Enter a color" 
+  variant="standard"
+   />
+  <Button onClick={()=>setColors([...colors,color])} variant="outlined">
+  Add color
+  </Button>
+ </div>
   
-    </div>
+ { colors.map((clr,index) => ( 
+   <ColorBox key={index}color={clr}/>
+  ))}
+  
+  <ColorBox/>
+ </div>
 
-   
-  );
-}
-
-function Counter(){
-  const [like,setLike]=useState(0);
-  const [dislike,setDislike]=useState(0);
-  return(
-    <div className="counter-container">
-<button className="likes-dislikes" onClick={()=>{setLike(like+1);}}>👍 {like}</button>
-<button className="likes-dislikes" onClick={()=>{setDislike(dislike+1);}}>👎{dislike}</button>
-</div>
-  );
-}
-
-
-function MovieList({movies}){
-  return(
-  <section className="movie-list">
-     {movies.map(({name,ratings,summary,poster})=>(
-    <Movie
-     name={name}
-    ratings={ratings} 
-    summary={summary}
-    poster={poster}
-    />
-     ))}
-    
-   </section>
   )}
-  
-  function Movie({name,ratings,summary,poster}){
-    const[show,setShow]=useState(true);
-    const styles={color:ratings < 8.5?"crimson":"green",fontWieght:"bold"};
-    const summaryStyles={display:show ?"block":"none"};
-    return (
-      <div className="movie-container">
-    <img src={poster} 
-    alt={name} 
-    className="movie-poster"/>
-    <div className="details">
-    <h2 className="movie-name">{name}</h2>
-    <h3 className="movie-ratings" style={styles}>⭐{ratings}</h3>
-    </div>
-    <button onClick={()=>setShow(!show)} className="movie-show-button">{show?"Hide":"Show"} description</button>
-    <p style={summaryStyles}className="movie-summary">{summary}</p>
-    <Counter/>
-    </div>
-    );
-  }
- 
+function ColorBox({color}){
+  const styles={backgroundColor:color,height:"25px",width:"200px",marginTop:"10px"}
+  return <div style={styles}>
+  </div>
+}
+
+
+

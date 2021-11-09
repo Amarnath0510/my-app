@@ -75,3 +75,10 @@ body{
   font-size:15px;
   margin-top: 10px;
 }
+.add-color-form{
+  display:flex;
+  gap:10px;
+  flex-direction: column;
+  width: 250px;
+  
+}
