@@ -1,5 +1,5 @@
 import './App.css';
-
+import{useState} from 'react';
 export default function App() {
   console.log("Hi");
   const movies=[
@@ -39,34 +39,61 @@ export default function App() {
       ratings:"8.5",
       summary:"An orphan named Surya raised in a slum befriends a good crime boss named Devaraj and works for him. Their existence is threatened when a new honest district collector arrives.",
     },
+    {
+      name:"Jai Bheem",
+      poster:"https://m.media-amazon.com/images/M/MV5BY2Y5ZWMwZDgtZDQxYy00Mjk0LThhY2YtMmU1MTRmMjVhMjRiXkEyXkFqcGdeQXVyMTI1NDEyNTM5._V1_FMjpg_UX1000_.jpg",
+      ratings:"9.8",
+      summary:"A pregnant woman from a primitive tribal community, searches desperately for her husband, who is missing from police custody. A High Court advocate rises in support to find her husband and seek justice for them.",
+    },
+    {
+      name:"kaththi",
+      poster:"http://3.bp.blogspot.com/-pQJ25BfkxZc/VEcspZxO__I/AAAAAAAAEm0/pdqBdjZetAs/s1600/Vijay-samantha-Kaththi-movie-stills-24.jpg",
+      ratings:"8.1",
+      summary:"Kathiresan, who escapes from prison, accidentally meets his lookalike, Jeeva, who gets shot by criminals. Kathiresan masquerades as Jeeva in order to save himself, but it turns him into a crusader.",
+    }
   ];
 
-  return (
+  return ( 
      <div className="App">
-    
-     {movies.map((mv)=>(
+    <MovieList movies={movies}/>
   
-    
-      
-    
-    <Movie
-     name={mv.name}
-    ratings={mv.ratings} 
-    summary={mv.summary}
-    poster={mv.poster}
-    />
-     ))}
-    
-    
-   
     </div>
 
    
   );
 }
-  
+
+function Counter(){
+  const [like,setLike]=useState(0);
+  const [dislike,setDislike]=useState(0);
+  return(
+    <div className="counter-container">
+<button className="likes-dislikes" onClick={()=>{setLike(like+1);}}>👍 {like}</button>
+<button className="likes-dislikes" onClick={()=>{setDislike(dislike+1);}}>👎{dislike}</button>
+</div>
+  );
+}
+
+
+function MovieList({movies}){
+  return(
+  <section className="movie-list">
+     {movies.map(({name,ratings,summary,poster})=>(
+    <Movie
+     name={name}
+    ratings={ratings} 
+    summary={summary}
+    poster={poster}
+    />
+     ))}
+    
+   </section>
+  )}
   
   function Movie({name,ratings,summary,poster}){
+    const[show,setShow]=useState(true);
+    const styles={color:ratings < 8.5?"crimson":"green",fontWieght:"bold"};
+    const summaryStyles={display:show ?"block":"none"};
     return (
       <div className="movie-container">
     <img src={poster} 
@@ -74,9 +101,11 @@ export default function App() {
     className="movie-poster"/>
     <div className="details">
     <h2 className="movie-name">{name}</h2>
-    <h3 className="movie-ratings">⭐{ratings}</h3>
+    <h3 className="movie-ratings" style={styles}>⭐{ratings}</h3>
     </div>
-    <p className="movie-summary">{summary}</p>
+    <button onClick={()=>setShow(!show)} className="movie-show-button">{show?"Hide":"Show"} description</button>
+    <p style={summaryStyles}className="movie-summary">{summary}</p>
+    <Counter/>
     </div>
     );
   }
