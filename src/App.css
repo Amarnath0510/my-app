@@ -46,6 +46,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: 20px;;
   
 }
 .movie-poster{
@@ -59,4 +60,18 @@
 body{
   margin: 20px;
   font-family:cursive;
+}
+.movie-list{
+  display:flex;
+  gap:24px;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.counter-container{
+  display:flex;
+  gap:10px;
+}
+.likes-dislikes{
+  font-size:15px;
+  margin-top: 10px;
 }
