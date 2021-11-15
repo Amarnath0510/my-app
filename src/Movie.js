@@ -15,7 +15,7 @@ import CardContent from '@mui/material/CardContent';
 export function Movie({ name, ratings, summary, poster }) {
   const [show, setShow] = useState(true);
   const styles = { color: ratings < 8.5 ? "crimson" : "green", fontWieght: "bold" };
-  const summaryStyles = { display: show ? "block" : "none" };
+  // const summaryStyles = { display: show ? "block" : "none" };
   return (
     <Card className="movie-container">
       <img src={poster}
