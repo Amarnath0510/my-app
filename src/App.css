@@ -56,6 +56,8 @@
 }
 .movie-container{
   width:340px;
+  height: min-content;
+  
 }
 body{
   margin: 20px;
@@ -81,4 +83,24 @@ body{
   flex-direction: column;
   width: 250px;
   
+}
+.movie-name{
+  font-size: 24px;
+  margin:0;
+  max-width: 70%;
+}
+.add-movie-form{
+  margin: 20px;
+  display:flex;
+  gap:10px;
+  flex-direction: column;
+}
+nav{
+  font-size: 24px;
+  
+  display:flex;
+  gap:24px;
+  margin:20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+
 }

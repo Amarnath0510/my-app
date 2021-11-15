@@ -3,11 +3,12 @@ import { MovieList } from './MovieList';
 import{useState} from "react";
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+
+import { Switch, Route, Link } from "react-router-dom";
 export default function App() {
   console.log("Hi");
   const INITIAL_MOVIES=[
-    {
-      name:"Godfather",
+     {name:"Godfather",
       poster:"https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
       ratings:"9.2",
       summary:"The aging patriarch of an organized crime dynasty in postwar New York City transfers control of his clandestine empire to his reluctant youngest son",
@@ -53,58 +54,93 @@ export default function App() {
       poster:"http://3.bp.blogspot.com/-pQJ25BfkxZc/VEcspZxO__I/AAAAAAAAEm0/pdqBdjZetAs/s1600/Vijay-samantha-Kaththi-movie-stills-24.jpg",
       ratings:"8.1",
       summary:"Kathiresan, who escapes from prison, accidentally meets his lookalike, Jeeva, who gets shot by criminals. Kathiresan masquerades as Jeeva in order to save himself, but it turns him into a crusader.",
-    }
+    },
   ];
+  
+const[movies,setMovies]=useState(INITIAL_MOVIES);
+
+
+
+  return (
+    <div className="App">
+    <nav>
+    <Link to="/">Home</Link>
+    <Link to="/movies">Movies</Link>
+    <Link to="/add-movies">Add Movies</Link>
+    <Link to="/color-game">Color game</Link>
+    </nav>
+    <Switch>
+    <Route path="/movies">
+    <MovieList movies={movies} />
+    </Route>
+    <Route path="/add-movies">
+    <AddMovie movies={movies} setMovies={setMovies}/>
+    </Route>
+    <Route path="/color-game">
+    <AddColor/>
+    </Route>
+    <Route path="/">
+    <Welcome/>
+     </Route>
+    </Switch>
+   </div> 
+  );
+  
+function Welcome(){
+  return<h2>Welcome to GMDB</h2>
+}
+function AddMovie({movies,setMovies}){
   const [name,setName]=useState("");
   const [poster,setPoster]=useState("");
   const [ratings,setRatings]=useState("");
   const [summary,setSummary]=useState("");
-const[movies,setMovies]=useState(INITIAL_MOVIES);
-const addMovie=()=>{
- const newMovie={
-    name,
-    poster,
-    ratings,
-    summary,
-  };
-  console.log(newMovie);
-  setMovies([...movies,newMovie]);
-
-
-};
-  return ( 
-     <div className="App">
-     <div>
-
-     <input
+  const addMovie=()=>{
+    const newMovie={
+       name,
+       poster,
+       ratings,
+       summary,
+     };
+     console.log(newMovie);
+     setMovies([...movies,newMovie]);
+   
+   
+   };
+  return <div className="add-movie-form">
+  <TextField 
      value={name}
-  onChange={(event)=>setName(event.target.value)}
-      placeholder="Enter a movie name "/>
-     <input 
-     value={poster}
-  onChange={(event)=>setPoster(event.target.value)}
-     placeholder="Enter a movie poster "/>
-     <input
-     value={ratings}
-  onChange={(event)=>setRatings(event.target.value)}
-      placeholder="Enter a movie ratings "/>
-     <input 
-     value={summary}
-  onChange={(event)=>setSummary(event.target.value)}
-      placeholder="Enter a movie summary "/>
-     < button onClick={addMovie}>Add movie</button>
-     </div>
-     <MovieList movies={movies}/>
-      <AddColor/>
-     <ColorBox />
-   </div> 
-  );
+onChange={(event)=>setName(event.target.value)}
+  label="Name"
+  variant="standard"
+  />
+  <TextField 
+  value={poster}
+onChange={(event)=>setPoster(event.target.value)}
+  label="Poster"
+  variant="standard"
+  />
+  <TextField
+  value={ratings}
+onChange={(event)=>setRatings(event.target.value)}
+   label="Ratings" 
+   variant="standard"
+   />
+  <TextField
+  value={summary}
+onChange={(event)=>setSummary(event.target.value)}
+ label="Summary" 
+ variant="standard"
+/>
+  < Button onClick={addMovie} variant="outlined">
+  Add movie
+  </Button>
+  </div>
 }
 
 function AddColor(){
   const [color,setColor]=useState("orange");
   const styles={backgroundColor:color};
-  // const colors=["teal","orange","blue"];
+  
   const[colors,setColors]=useState(["teal","orange","blue"]);
   return (
     <div>
@@ -129,11 +165,9 @@ function AddColor(){
  </div>
 
   )}
-function ColorBox({color}){
-  const styles={backgroundColor:color,height:"25px",width:"200px",marginTop:"10px"}
-  return <div style={styles}>
-  </div>
+ function ColorBox({color}){
+   const styles={backgroundColor:color,height:"25px",width:"200px",marginTop:"10px"}
+   return <div style={styles}>
+   </div>
+ }
 }
-
-
-
