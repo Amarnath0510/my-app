@@ -104,3 +104,11 @@ nav{
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 
 }
+not-found-image{
+  width:100%;
+  object-fit: cover;
+}
+not-found-container{
+  text-align: center;
+  color:teal;
+}

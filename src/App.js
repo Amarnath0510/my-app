@@ -4,7 +4,7 @@ import{useState} from "react";
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route, Link ,Redirect} from "react-router-dom";
 export default function App() {
   console.log("Hi");
   const INITIAL_MOVIES=[
@@ -70,6 +70,13 @@ const[movies,setMovies]=useState(INITIAL_MOVIES);
     <Link to="/color-game">Color game</Link>
     </nav>
     <Switch>
+    <Route  exact path="/">
+    <Welcome/>
+     </Route>
+     <Route path="/films">
+     <Redirect to="/movies"/>
+     </Route>
+    <Route path="/movies/:id">Movie details</Route>
     <Route path="/movies">
     <MovieList movies={movies} />
     </Route>
@@ -79,13 +86,20 @@ const[movies,setMovies]=useState(INITIAL_MOVIES);
     <Route path="/color-game">
     <AddColor/>
     </Route>
-    <Route path="/">
-    <Welcome/>
-     </Route>
+    <Route path="**">
+    <NotFound/>
+      </Route>
     </Switch>
    </div> 
   );
   
+function NotFound(){
+  return  <div className="not-found-container">
+  <img className="not-found-image" src="https://freefrontend.com/assets/img/html-funny-404-pages/CodePen-404-Page.gif"
+  alt="404 error"/>
+  </div>
+}
+
 function Welcome(){
   return<h2>Welcome to GMDB</h2>
 }
