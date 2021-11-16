@@ -112,3 +112,7 @@ not-found-container{
   text-align: center;
   color:teal;
 }
+.movie-detail-container{
+padding:24px;
+max-width: 640px;
+}

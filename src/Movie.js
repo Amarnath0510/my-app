@@ -15,9 +15,9 @@ import {useHistory} from "react-router-dom";
 
 
 
-export function Movie({ name, ratings, summary, poster,id }) {
+export function Movie({ name, ratings, summary, poster,id,deleteButton,editButton }) {
   const [show, setShow] = useState(true);
-  const history=useHistory();
+const history=useHistory();
   const styles = { color: ratings < 8.5 ? "crimson" : "green", fontWieght: "bold" };
   const summaryStyles = { display: show ? "block" : "none" };
   return (
@@ -53,7 +53,7 @@ className="movie-show-button"
         <h3 className="movie-ratings" style={styles}>⭐{ratings}</h3>
       </div>
       {show ? <p className="movie-summary">{summary}</p>:"" } 
-      <Counter />
+      <Counter />{deleteButton} {editButton}
       </CardContent>
     </Card>
   );
