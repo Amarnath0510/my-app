@@ -1,24 +1,31 @@
 import { useState } from "react";
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-
+import { useHistory,useParams } from "react-router-dom";
 export function EditMovie({ movies, setMovies }) {
-  const [name, setName] = useState("");
-  const [poster, setPoster] = useState("");
-  const [ratings, setRatings] = useState("");
-  const [summary, setSummary] = useState("");
-  const [trailer,setTrailer]= useState("");
-  const addMovie = () => {
-    const newMovie = {
+    const { id } = useParams();
+    const history=useHistory();
+    const movie=movies[id];
+    console.log(id,movie);
+  const [name, setName] = useState(movie.name);
+  const [poster, setPoster] = useState(movie.poster);
+  const [ratings, setRatings] = useState(movie.ratings);
+  const [summary, setSummary] = useState(movie.summary);
+  const [trailer,setTrailer]= useState(movie.trailer);
+  const editMovie = () => {
+    const updatedMovie = {
       name,
       poster,
       ratings,
       summary,
       trailer,
     };
-    console.log(newMovie);
-    setMovies([...movies, newMovie]);
-
+    console.log(updatedMovie);
+    // setMovies([...movies, updatedMovie]);
+const copyMovieList=[...movies];
+copyMovieList[id]=updatedMovie;
+setMovies(copyMovieList);
+history.push("/movies");
 
   };
   return (
@@ -49,7 +56,7 @@ export function EditMovie({ movies, setMovies }) {
       label="Trailer"
       variant="standard" />
 
-    <Button onClick={addMovie} variant="outlined">
+    <Button onClick={editMovie} variant="outlined">
       Save 
     </Button>
   </div>

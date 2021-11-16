@@ -88,7 +88,7 @@ const[movies,setMovies]=useState(INITIAL_MOVIES);
      <Route path="/films">
      <Redirect to="/movies"/>
      </Route>
-    <Route path="/movies/edit/:id"><EditMovie/></Route>
+    <Route path="/movies/edit/:id"><EditMovie movies={movies} setMovies={setMovies}/></Route>
     <Route path="/movies/:id">
     <MovieDetails movies={movies}/>
     </Route>

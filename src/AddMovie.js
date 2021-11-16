@@ -1,8 +1,10 @@
 import { useState } from "react";
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-
+import { useHistory,useParams } from "react-router-dom";
 export function AddMovie({ movies, setMovies }) {
+  const { id } = useParams();
+    const history=useHistory();
   const [name, setName] = useState("");
   const [poster, setPoster] = useState("");
   const [ratings, setRatings] = useState("");
@@ -17,7 +19,10 @@ export function AddMovie({ movies, setMovies }) {
       trailer,
     };
     console.log(newMovie);
+   
     setMovies([...movies, newMovie]);
+    
+    history.push("/movies");
 
 
   };
