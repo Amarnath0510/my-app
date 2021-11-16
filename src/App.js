@@ -8,6 +8,7 @@ import { NotFound } from './NotFound';
 import { Welcome } from './Welcome';
 import { AddMovie } from './AddMovie';
 import { AddColor } from './AddColor';
+import { EditMovie } from './EditMovie';
 export default function App() {
   console.log("Hi");
   const INITIAL_MOVIES=[
@@ -87,7 +88,7 @@ const[movies,setMovies]=useState(INITIAL_MOVIES);
      <Route path="/films">
      <Redirect to="/movies"/>
      </Route>
-    <Route path="/movies/edit/:id">Edit movies</Route>
+    <Route path="/movies/edit/:id"><EditMovie/></Route>
     <Route path="/movies/:id">
     <MovieDetails movies={movies}/>
     </Route>

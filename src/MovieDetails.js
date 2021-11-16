@@ -10,7 +10,7 @@ export function MovieDetails({ movies }) {
       <iframe
         width="100%"
         height="800"
-        src={movie.trailer}
+        src = {movie.trailer}
         title="YouTube video player"
         frameborder="0"
         allow="accelerometer; 
@@ -19,12 +19,11 @@ export function MovieDetails({ movies }) {
       </iframe>
 
       <div className="details">
-        <h2 className="movie-name">
-          {movie.name}
-        </h2>
-        <h3 className="movie-ratings" style={styles}>⭐{movie.ratings}</h3>
+        <h2 className="movie-name"> {movie.name} </h2>
+       <h3 className="movie-ratings" style={styles}>⭐{movie.ratings}</h3>
       </div>
       <p className="movie-summary">{movie.summary}</p>
+      
     </div>
   );
 }

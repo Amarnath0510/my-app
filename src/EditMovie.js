@@ -2,7 +2,7 @@ import { useState } from "react";
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 
-export function AddMovie({ movies, setMovies }) {
+export function EditMovie({ movies, setMovies }) {
   const [name, setName] = useState("");
   const [poster, setPoster] = useState("");
   const [ratings, setRatings] = useState("");
@@ -21,7 +21,8 @@ export function AddMovie({ movies, setMovies }) {
 
 
   };
-  return <div className="add-movie-form">
+  return (
+  <div className="add-movie-form">
     <TextField
       value={name}
       onChange={(event) => setName(event.target.value)}
@@ -49,7 +50,8 @@ export function AddMovie({ movies, setMovies }) {
       variant="standard" />
 
     <Button onClick={addMovie} variant="outlined">
-      Add movie
+      Save 
     </Button>
-  </div>;
+  </div>
+  );
 }
