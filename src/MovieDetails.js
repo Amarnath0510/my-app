@@ -18,7 +18,7 @@ method:"GET",
   })
   .then((data)=>data.json())
   .then((mv)=>setMovie(mv));
-},[id]);
+},[]);
 
   console.log(movie);
   const styles = { color: "ratings" < 8.5 ? "crimson" : "green", fontWieght: "bold" };

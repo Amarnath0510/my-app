@@ -3,12 +3,30 @@ import { Movie } from "./Movie";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import {useHistory} from "react-router-dom";
-export function MovieList({ movies,setMovies }) {
+import{useEffect, useState} from "react";
+export function MovieList() {
+  const[movies,setMovies]=useState([]);
+const getMovies= ()=>{
+  fetch("https://616b1eb916e7120017fa1233.mockapi.io/movies")
+  .then((data)=>data.json())
+  .then((mvs)=>setMovies(mvs));
+};
+useEffect(getMovies,[]);
+
+
+const deleteMovie=(id) =>{
+   fetch(`https://616b1eb916e7120017fa1233.mockapi.io/movies/${id}`,{
+    method:"DELETE",
+              })
+              .then(()=>getMovies());   
+              };
+
   const history=useHistory();
   return (
     <section className="movie-list">
-      {movies.map(({ name, ratings, summary, poster,id },index) => (
+      {movies.map(({ name, ratings, summary, poster,id }) => (
         <Movie
+        key={id}
           name={name}
           ratings={ratings}
           summary={summary}
@@ -16,18 +34,7 @@ export function MovieList({ movies,setMovies }) {
            id={id}
           deleteButton={
             <IconButton 
-          onClick={()=>{
-            // fetch(
-            //   "https:616b1eb916e7120017fa1233.mockapi.io/movies/"+id,
-            //   {method:"DELETE"})
-          // console.log("Deleting...",index);
-          // const deleteIdx=index;
-          // const remainingMovies=movies.filter(
-          //   (mv,idx)=>idx !== deleteIdx
-          // );
-          // console.log("Remaining",remainingMovies);
-          // setMovies(remainingMovies);  
-          }}
+          onClick={() => deleteMovie (id)}  
         className="movie-show-button"
            color="error"
             aria-label="delete movie"
@@ -38,7 +45,7 @@ export function MovieList({ movies,setMovies }) {
           editButton={
           <IconButton 
           
-          onClick={()=> history.push("/movies/edit/" + index)}
+          onClick={()=> history.push("/movies/edit/" + id)}
 
    
         className="movie-show-button"

@@ -83,20 +83,13 @@ export default function App() {
   //     trailer:"https://www.youtube.com/embed/bMf0IyzyKt4"
   //   },
   // ];
-  
-const[movies,setMovies]=useState([]);
-const history=useHistory();
+  const history=useHistory();
 const[mode,setMode]=useState("dark");
 const theme = createTheme({
   palette: {
     mode: mode,
   },
 });
-useEffect(()=>{
-  fetch("https://616b1eb916e7120017fa1233.mockapi.io/movies")
-  .then((data)=>data.json())
-  .then((mvs)=>setMovies(mvs));
-},[]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -125,15 +118,15 @@ useEffect(()=>{
      <Route path="/films">
      <Redirect to="/movies"/>
      </Route>
-    <Route path="/movies/edit/:id"><EditMovie movies={movies} setMovies={setMovies}/></Route>
+    <Route path="/movies/edit/:id"><EditMovie /></Route>
     <Route path="/movies/:id">
-    <MovieDetails movies={movies}/>
+    <MovieDetails />
     </Route>
     <Route path="/movies">
-    <MovieList movies={movies} setMovies={setMovies}/>
+     <MovieList />
     </Route>
     <Route path="/add-movies">
-    <AddMovie movies={movies} setMovies={setMovies}/>
+    <AddMovie />
     </Route>
     <Route path="/color-game">
     <AddColor/>
