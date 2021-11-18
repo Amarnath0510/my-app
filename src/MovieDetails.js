@@ -1,5 +1,5 @@
 
-import DeleteIcon from '@mui/icons-material/Delete';
+// import DeleteIcon from '@mui/icons-material/Delete';
 import Button from '@mui/material/Button';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import {useHistory,useParams} from "react-router-dom";
@@ -18,7 +18,7 @@ method:"GET",
   })
   .then((data)=>data.json())
   .then((mv)=>setMovie(mv));
-},[]);
+},[id]);
 
   console.log(movie);
   const styles = { color: "ratings" < 8.5 ? "crimson" : "green", fontWieght: "bold" };

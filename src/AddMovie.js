@@ -18,7 +18,7 @@ useEffect(()=>{
   summary,
   trailer,
   });
-},[name,poster]);
+ },[name,poster,ratings,summary,trailer]);
 
   const addMovie = () => {
     const newMovie = {
