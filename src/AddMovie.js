@@ -1,15 +1,25 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import { useHistory,useParams } from "react-router-dom";
+ import { useHistory } from "react-router-dom";
 export function AddMovie({ movies, setMovies }) {
-  const { id } = useParams();
+  // const { id } = useParams();
     const history=useHistory();
   const [name, setName] = useState("");
   const [poster, setPoster] = useState("");
   const [ratings, setRatings] = useState("");
   const [summary, setSummary] = useState("");
   const [trailer,setTrailer]= useState("");
+useEffect(()=>{
+  console.log("movie form is Updated",{
+  name,
+  poster,
+  ratings,
+  summary,
+  trailer,
+  });
+},[name,poster]);
+
   const addMovie = () => {
     const newMovie = {
       name,

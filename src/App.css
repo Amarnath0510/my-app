@@ -60,7 +60,7 @@
   
 }
 body{
-  margin: 20px;
+  margin: 10px;
   font-family:cursive;
 }
 .movie-list{
@@ -115,4 +115,28 @@ not-found-container{
 .movie-detail-container{
 padding:24px;
 max-width: 640px;
+}
+.game-box{
+  background-color: white;
+  color: black;
+  height: 8rem;
+  width:8rem;
+  font-size:8rem ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid;
+  cursor: pointer;
+}
+.board{
+  display: grid;
+  grid-template-columns:1fr 1fr 1fr;
+  width:min-content;
+}
+.full-game{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
 }

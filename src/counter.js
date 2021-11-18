@@ -4,11 +4,15 @@ import Badge from '@mui/material/Badge';
 // import Stack from '@mui/material/Stack';
 // import MailIcon from '@mui/icons-material/Mail';
 
-import {useState} from "react";
+import {useState,useEffect} from "react";
 export function Counter(){
     const [like,setLike]=useState(0);
     const [dislike,setDislike]=useState(0);
     const incrementLike = () => setLike(like+1);
+
+   useEffect(()=>{
+     console.log("Like is Updated",like);
+   },[like,dislike]);
     return(
       <div 
       className="counter-container">

@@ -7,24 +7,26 @@ export function MovieList({ movies,setMovies }) {
   const history=useHistory();
   return (
     <section className="movie-list">
-      {movies.map(({ name, ratings, summary, poster },index) => (
+      {movies.map(({ name, ratings, summary, poster,id },index) => (
         <Movie
           name={name}
           ratings={ratings}
           summary={summary}
           poster={poster}
-           
-          id={index}
+           id={id}
           deleteButton={
             <IconButton 
           onClick={()=>{
-          console.log("Deleting...",index);
-          const deleteIdx=index;
-          const remainingMovies=movies.filter(
-            (mv,idx)=>idx !== deleteIdx
-          );
-          console.log("Remaining",remainingMovies);
-          setMovies(remainingMovies);  
+            // fetch(
+            //   "https:616b1eb916e7120017fa1233.mockapi.io/movies/"+id,
+            //   {method:"DELETE"})
+          // console.log("Deleting...",index);
+          // const deleteIdx=index;
+          // const remainingMovies=movies.filter(
+          //   (mv,idx)=>idx !== deleteIdx
+          // );
+          // console.log("Remaining",remainingMovies);
+          // setMovies(remainingMovies);  
           }}
         className="movie-show-button"
            color="error"
@@ -35,7 +37,7 @@ export function MovieList({ movies,setMovies }) {
           }
           editButton={
           <IconButton 
-          // stytle={{marginRight:"auto"}}
+          
           onClick={()=> history.push("/movies/edit/" + index)}
 
    
@@ -52,3 +54,9 @@ export function MovieList({ movies,setMovies }) {
     </section>
   );
 }
+
+// fetch(
+//   "https:616b1eb916e7120017fa1233.mockapi.io/movies"+id,
+//   {method:"DELETE"})
+// .then((data)=>data.json())
+// .then((mvs)=>setMovies(mvs));
