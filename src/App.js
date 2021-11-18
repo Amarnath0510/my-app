@@ -103,6 +103,7 @@ const theme = createTheme({
   <Button variant="text" color="inherit"  onClick={()=> history.push("/add-movies")}  >Add Movies</Button>
   <Button variant="text" color="inherit"  onClick={()=> history.push("/color-game")} >Color game</Button>
   <Button variant="text" color="inherit"  onClick={()=> history.push("/tic-tac-toe")} >Tic-Tac-Toe game</Button>
+  <Button variant="text" color="inherit"  onClick={()=> history.push("/form")} >BasicForm</Button>
   <Button 
   startIcon=  {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
   style={{marginLeft:"auto"}}
@@ -134,6 +135,9 @@ const theme = createTheme({
     <Route path="/tic-tac-toe">
     <TicTacToe/>
     </Route>
+    <Route path="/form">
+    <BasicForm/>
+    </Route>
     <Route path="**">
     <NotFound/>
       </Route>
@@ -142,6 +146,11 @@ const theme = createTheme({
    </Paper >
  </ThemeProvider>
   );
+}
+
+
+function BasicForm(){
+  return<h1>BasicForm</h1>
 }
 
 
@@ -162,16 +171,7 @@ function TicTacToe(){
 useState([0,1,2,3,4,5,6,7,8]);
 
   const[isXTurn,setISXTurn]=useState(true);
-//   const winner=decideWinner(board);
-// const handleClick = (index) =>{
-  
-// if (!board[index]){
-//   const boardCopy=[...board];
-//   boardCopy[index]=isXTurn ? "X" : "O" ;
-//   setBoard(boardCopy);
-// setISXTurn(!isXTurn);
-// }
-// };
+
 
 const decideWinner=(board) => {
   const lines=[
