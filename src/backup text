@@ -1,0 +1,24 @@
+<TextField
+    //     value={name}
+    //     onChange={(event) => setName(event.target.value)}
+    //     label="Name"
+    //     variant="standard" />
+    //  <TextField       value={poster}
+    //     onChange={(event) => setPoster(event.target.value)}
+    //     label="Poster"
+    //     variant="standard" />
+    //   <TextField
+    //     value={ratings}
+    //     onChange={(event) => setRatings(event.target.value)}
+    //     label="Ratings"
+    //     variant="standard" />
+    //   <TextField
+    //     value={summary}
+    //     onChange={(event) => setSummary(event.target.value)}
+    //     label="Summary"
+    //     variant="standard" />
+    //     <TextField
+    //     value={trailer}
+    //     onChange={(event) => setTrailer(event.target.value)}
+    //    label="Trailer"
+    //     variant="standard" />

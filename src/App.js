@@ -1,6 +1,6 @@
 import './App.css';
 import { MovieList } from './MovieList';
-import{useEffect, useState} from "react";
+import{ useState} from "react";
 import AppBar from '@mui/material/AppBar';
 // import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -22,6 +22,7 @@ import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import useWindowSize from 'react-use/lib/useWindowSize'
 import Confetti from 'react-confetti'
+import { BasicForm } from './BasicForm';
 
 
 export default function App() {
@@ -146,11 +147,6 @@ const theme = createTheme({
    </Paper >
  </ThemeProvider>
   );
-}
-
-
-function BasicForm(){
-  return<h1>BasicForm</h1>
 }
 
 

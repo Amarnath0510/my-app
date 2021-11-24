@@ -7,7 +7,7 @@ import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
- import { Icon } from '@mui/material';
+//  import { Icon } from '@mui/material';
 import InfoIcon from '@mui/icons-material/Info';
 import {useHistory} from "react-router-dom";
 
@@ -19,7 +19,7 @@ export function Movie({ name, ratings, summary, poster,id,deleteButton,editButto
   const [show, setShow] = useState(true);
 const history=useHistory();
   const styles = { color: ratings < 8.5 ? "crimson" : "green", fontWieght: "bold" };
-   const summaryStyles = { display: show ? "block" : "none" };
+  //  const summaryStyles = { display: show ? "block" : "none" };
   return (
     <Card className="movie-container">
       <img src={poster}
