@@ -26,17 +26,17 @@ const deleteMovie=(id) =>{
   const history=useHistory();
   return (
     <section className="movie-list">
-      {movies.map(({ name, ratings: rating, summary, poster,id }) => (
+      {movies.map(({ name, ratings: rating, summary, poster,id,_id }) => (
         <Movie
-        key={id}
+        key={_id}
           name={name}
           rating={rating}
           summary={summary}
           poster={poster}
-           id={id}
+           id={_id}
           deleteButton={
             <IconButton 
-          onClick={() => deleteMovie (id)}  
+          onClick={() => deleteMovie(_id)}  
         className="movie-show-button"
            color="error"
             aria-label="delete movie"
@@ -47,7 +47,7 @@ const deleteMovie=(id) =>{
           editButton={
           <IconButton 
           
-          onClick={()=> history.push("/movies/edit/" + id)}
+          onClick={()=> history.push("/movies/edit/" + _id)}
 
    
         className="movie-show-button"
