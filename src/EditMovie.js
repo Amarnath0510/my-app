@@ -7,10 +7,11 @@ import { formValidationSchema } from "./AddMovie";
 export function EditMovie() {
     const { id } = useParams();
     
-   
+    const API_URL="https://movie-app05.herokuapp.com";
     const[movie,setMovie]=useState(null);
 useEffect(()=>{
-  fetch(`https://616b1eb916e7120017fa1233.mockapi.io/movies/${id}`,{
+  fetch(`${API_URL}/movies/${id}`,{
+  // fetch(`https://616b1eb916e7120017fa1233.mockapi.io/movies/${id}`,{
 method:"GET",
   })
   .then((data)=>data.json())
@@ -35,10 +36,10 @@ function UpdateMovie({movie}){
   const editMovie = (updatedMovie) => {
     
 console.log(updatedMovie);
+const API_URL="https://movie-app05.herokuapp.com";
 
-
-
-  fetch(`https://616b1eb916e7120017fa1233.mockapi.io/movies/${movie.id}`,{
+fetch(`${API_URL}/movies/${movie.id}`,{
+  // fetch(`https://616b1eb916e7120017fa1233.mockapi.io/movies/${movie.id}`,{
       method:"PUT",
       body:JSON.stringify(updatedMovie),
         headers: {'Content-Type': 'application/json'

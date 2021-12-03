@@ -42,7 +42,9 @@ export function AddMovie() {
     
     
     //  history.push("/movies");
-   fetch(`https://616b1eb916e7120017fa1233.mockapi.io/movies`,{
+    const API_URL="https://movie-app05.herokuapp.com";
+    fetch(`${API_URL}/movies`,{
+  //  fetch(`https://616b1eb916e7120017fa1233.mockapi.io/movies`,{
         method:"POST",
         body:JSON.stringify(newMovie),
           headers: {'Content-Type': 'application/json'
