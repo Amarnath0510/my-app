@@ -9,11 +9,12 @@ export function MovieDetails() {
   const history = useHistory();
   const {id} = useParams();
 console.log(id);
-
+const API_URL="https://movie-app05.herokuapp.com";
 // const movie = movies[id];
 const[movie,setMovie]=useState({});
 useEffect(()=>{
-  fetch(`https://616b1eb916e7120017fa1233.mockapi.io/movies/${id}`,{
+  fetch(`${API_URL}/movies/${id}`,{
+  // fetch(`https://616b1eb916e7120017fa1233.mockapi.io/movies/${id}`,{
 method:"GET",
   })
   .then((data)=>data.json())
