@@ -26,11 +26,11 @@ const deleteMovie=(id) =>{
   const history=useHistory();
   return (
     <section className="movie-list">
-      {movies.map(({ name, ratings, summary, poster,id }) => (
+      {movies.map(({ name, ratings: rating, summary, poster,id }) => (
         <Movie
         key={id}
           name={name}
-          ratings={ratings}
+          rating={rating}
           summary={summary}
           poster={poster}
            id={id}

@@ -15,10 +15,10 @@ import {useHistory} from "react-router-dom";
 
 
 
-export function Movie({ name, ratings, summary, poster,id,deleteButton,editButton }) {
+export function Movie({ name, ratings: rating, summary, poster,id,deleteButton,editButton }) {
   const [show, setShow] = useState(true);
 const history=useHistory();
-  const styles = { color: ratings < 8.5 ? "crimson" : "green", fontWieght: "bold" };
+  const styles = { color: rating < 8.5 ? "crimson" : "green", fontWieght: "bold" };
   //  const summaryStyles = { display: show ? "block" : "none" };
   return (
     <Card className="movie-container">
@@ -50,7 +50,7 @@ className="movie-show-button"
 {show ? <ExpandLessIcon /> : <ExpandMoreIcon/>}
   </IconButton>
         </h2>
-        <h3 className="movie-ratings" style={styles}>⭐{ratings}</h3>
+        <h3 className="movie-ratings" style={styles}>⭐{rating}</h3>
       </div>
       {show ? <p className="movie-summary">{summary}</p>:"" } 
       <Counter />{deleteButton} {editButton}

@@ -22,7 +22,7 @@ method:"GET",
 },[id]);
 
   console.log(movie);
-  const styles = { color: "ratings" < 8.5 ? "crimson" : "green", fontWieght: "bold" };
+  const styles = { color: "rating" < 8.5 ? "crimson" : "green", fontWieght: "bold" };
   return (
     <div className="movie-detail-container">
       <iframe
@@ -38,7 +38,7 @@ method:"GET",
 
       <div className="details">
         <h2 className="movie-name"> {movie.name} </h2>
-       <h3 className="movie-ratings" style={styles}>⭐{movie.ratings}</h3>
+       <h3 className="movie-ratings" style={styles}>⭐{movie.rating}</h3>
       </div>
       <p className="movie-summary">{movie.summary}</p>
       <Button  onClick ={()=>history.goBack()}variant="outlined" startIcon={<KeyboardBackspaceIcon/>}>
