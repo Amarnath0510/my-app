@@ -64,3 +64,13 @@
       trailer:"https://www.youtube.com/embed/bMf0IyzyKt4"
     },
   ];
+
+   <Route path="/color-game">
+     <AddColor/>
+     </Route>
+     <Route path="/tic-tac-toe">
+     <TicTacToe/>
+     </Route>
+      <Button variant="text" color="inherit"  onClick={()=> history.push("/color-game")} >Color game</Button>
+   <Button variant="text" color="inherit"  onClick={()=> history.push("/tic-tac-toe")} >Tic-Tac-Toe game</Button>
+   147 function TicTacToe(){

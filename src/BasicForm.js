@@ -1,8 +1,8 @@
 import {  useFormik } from 'formik';
 import * as yup from 'yup';
-  const validateForm = (values)=>{
-    const errors={};
-    console.log(validateForm,values);
+   const validateForm = (values)=>{
+     const errors={};
+     console.log(validateForm,values);
 
    if( values.email.length<5){
      errors.email="Please provide email more than 5 letters"
