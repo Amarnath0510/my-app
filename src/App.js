@@ -15,14 +15,14 @@ import { MovieDetails } from './MovieDetails';
 import { NotFound } from './NotFound';
 import { Welcome } from './Welcome';
 import { AddMovie } from './AddMovie';
-// import { AddColor } from './AddColor';
+ import { AddColor } from './AddColor';
 import { EditMovie } from './EditMovie';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
-// import useWindowSize from 'react-use/lib/useWindowSize'
-// import Confetti from 'react-confetti'
-// import { BasicForm } from './BasicForm';
+import useWindowSize from 'react-use/lib/useWindowSize'
+import Confetti from 'react-confetti'
+import { BasicForm } from './BasicForm';
 
 
 export default function App() {
@@ -102,7 +102,9 @@ const theme = createTheme({
   <Button variant="text" color="inherit" onClick={()=> history.push("/")}>Home</Button>
   <Button variant="text" color="inherit" onClick={()=> history.push("/movies")} >Movies</Button>
   <Button variant="text" color="inherit"  onClick={()=> history.push("/add-movies")}  >Add Movies</Button>
-
+  <Button variant="text" color="inherit"  onClick={()=> history.push("/color-game")} >Color game</Button>
+  <Button variant="text" color="inherit"  onClick={()=> history.push("/tic-tac-toe")} >Tic-Tac-Toe game</Button>
+    <Button variant="text" color="inherit"  onClick={()=> history.push("/form")} >BasicForm</Button>
 
   <Button 
   startIcon=  {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
@@ -129,8 +131,15 @@ const theme = createTheme({
     <Route path="/add-movies">
     <AddMovie />
     </Route>
-     
-    
+    <Route path="/color-game">
+    <AddColor/>
+    </Route>
+    <Route path="/tic-tac-toe">
+    <TicTacToe/>
+    </Route>
+    <Route path="/form">
+     <BasicForm/>
+     </Route>
     <Route path="**">
     <NotFound/>
       </Route>
@@ -142,79 +151,80 @@ const theme = createTheme({
 }
 
 
-// function TicTacToe(){
-//   const { width, height } = useWindowSize()
-//   const[board,setBoard]=
-//    useState([
-//     null,
-//   null,
-//     null,
-//    null,
-//     null,
-//     null,
-//     null,
-//     null,
-//    null,
-//    ]);
-// useState([0,1,2,3,4,5,6,7,8]);
+ function TicTacToe(){
+  const { width, height } = useWindowSize()
+   const[board,setBoard]=
+   useState([
+     null,
+    null,
+     null,
+    null,
+    null,
+     null,
+     null,
+    null,
+    null,
+    ]);
+ useState([0,1,2,3,4,5,6,7,8]);
 
-//   const[isXTurn,setISXTurn]=useState(true);
+   const[isXTurn,setISXTurn]=useState(true);
 
 
-// const decideWinner=(board) => {
-//   const lines=[
-//     [0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6],
-//   ];
-// for (let i=0;i<lines.length;i++){
-//   const[a,b,c]=lines[i];
-//   if(board[a]!==null && board[a]===board[b] && board[b]===board[c]){
-//     console.log("Winner is",board[a]); 
-//     return board[a]; 
-//   }
-// }
-// return null;
-// };
-//  const winner=decideWinner(board);
-//  const handleClick = (index) =>{
+ const decideWinner=(board) => {
+   const lines=[
+     [0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6],
+   ];
+ for (let i=0;i<lines.length;i++){
+   const[a,b,c]=lines[i];
+   if(board[a]!==null && board[a]===board[b] && board[b]===board[c]){
+     console.log("Winner is",board[a]); 
+     return board[a]; 
+   }
+ }
+ return null;
+ };
+  const winner=decideWinner(board);
+  const handleClick = (index) =>{
   
-//  if (winner===null && !board[index]){
-//    const boardCopy=[...board];
-//    boardCopy[index]=isXTurn ? "X" : "O" ;
-//    setBoard(boardCopy);
-//  setISXTurn(!isXTurn);
-//  }
-//  };
+if (winner===null && !board[index]){   
+   const boardCopy=[...board];
+    boardCopy[index]=isXTurn ? "X" : "O" ;
+    setBoard(boardCopy);
+  setISXTurn(!isXTurn);
+ }
+  };
 
-//  return (
-//    <div className="full-game">
-//    <Confetti
-//    width={width}
-//    height={height}
-//    gravity={0.05}
-//  />
+ return (
+   <div className="full-game">
+    <Confetti
+    width={width}
+    height={height}
+   gravity={0.05}
+ />
 
-//     <div className="board">
-//     {board.map((val,index)=>(
-//      <GameBox  val={val} onPlayerClick={()=> handleClick(index)}/>
-//     ))}
-//      </div>
-//      {winner ?<h2>Winner is:{winner}</h2>: ""}
-//      </div>
-//   );
-// }
-  
-// function GameBox({onPlayerClick,val}){
+    <div className="board">
+     {board.map((val,index)=>(
+      <GameBox  val={val} onPlayerClick={()=> handleClick(index)}/>
+    ))}
+      </div>
  
-//   const styles={color: val=== "X" ? "green":"red"};
-//   return(
+      {winner ?<h2>Winner is:{winner}</h2>: ""}
+    </div>
+   );
+}
   
-//     <div
-//     style={styles}
-//      onClick={onPlayerClick}
-//       className="game-box"
-//      >
-//   {val}
-//   </div>
-//   );
-// }
+ function GameBox({onPlayerClick,val}){
+ 
+   const styles={color: val=== "X" ? "green":"red"};
+   return(
+  
+     <div
+     style={styles}
+      onClick={onPlayerClick}
+       className="game-box"
+      >
+  {val}
+   </div>
+   );
+ }
 
