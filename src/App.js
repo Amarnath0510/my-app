@@ -22,7 +22,7 @@ import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 // import useWindowSize from 'react-use/lib/useWindowSize'
 // import Confetti from 'react-confetti'
-import { BasicForm } from './BasicForm';
+// import { BasicForm } from './BasicForm';
 
 
 export default function App() {
@@ -103,7 +103,7 @@ const theme = createTheme({
   <Button variant="text" color="inherit" onClick={()=> history.push("/movies")} >Movies</Button>
   <Button variant="text" color="inherit"  onClick={()=> history.push("/add-movies")}  >Add Movies</Button>
 
-  <Button variant="text" color="inherit"  onClick={()=> history.push("/form")} >BasicForm</Button>
+
   <Button 
   startIcon=  {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
   style={{marginLeft:"auto"}}
@@ -130,9 +130,7 @@ const theme = createTheme({
     <AddMovie />
     </Route>
      
-    <Route path="/form">
-    <BasicForm/>
-    </Route>
+    
     <Route path="**">
     <NotFound/>
       </Route>
